@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block body %}
+<div class="card center" style="background: rgba(0,0,0,0.6); color: #fef3c7; padding:20px; border-radius:12px;">
+  <h2 style="font-size:1.5rem; margin-bottom:16px;">🎯 Detection Options</h2>
+  <div class="row" style="justify-content:center; gap:16px;">
+    <a class="btn big" href="{{ url_for('upload_detect') }}">📁 Detect from Stored Video</a>
+    <a class="btn big" href="{{ url_for('live_detect') }}">📹 Start Live Stream Detection</a>
+  </div>
+  <div style="margin-top:16px;">
+    <a class="btn secondary" href="{{ url_for('index') }}">🏠 Return Home</a>
+  </div>
+</div>
+
+<style>
+  body {
+    background: url('{{ url_for("static", filename="detect.jpg") }}') no-repeat center center fixed;
+    background-size: cover;
+    color: #f3f4f6;
+  }
+  .card h2 {
+    text-shadow: 0 0 8px #fef3c7;
+  }
+  .btn {
+    background: #2563eb;
+    color: #fff;
+    padding: 12px 20px;
+    border-radius: 8px;
+    text-decoration: none;
+    margin-top: 6px;
+    display: inline-block;
+    transition: all 0.3s;
+  }
+  .btn:hover {
+    background: #1e40af;
+    transform: scale(1.05);
+  }
+  .btn.secondary {
+    background: #6b7280;
+  }
+  .btn.secondary:hover {
+    background: #4b5563;
+  }
+</style>
+{% endblock %}

@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% block body %}
+<div class="card">
+  <h2>Detecting on uploaded video</h2>
+  <div class="row">
+    <div style="flex:1;">
+      <img id="stream" src="" alt="detection stream" />
+    </div>
+  </div>
+
+  <div class="controls">
+    <button id="startBtn" class="btn">Start</button>
+    <button id="stopBtn" class="btn secondary">Stop</button>
+    <a class="btn" href="{{ url_for('detection_menu') }}">Return Detection Menu</a>
+    <a class="btn secondary" href="{{ url_for('upload_detect') }}">Detect Another</a>
+  </div>
+</div>
+
+<script>
+const filename = "{{ filename }}";
+const startBtn = document.getElementById('startBtn');
+const stopBtn = document.getElementById('stopBtn');
+const img = document.getElementById('stream');
+
+function startStream() {
+  fetch("/start_stream", {
+    method: "POST",
+    headers: {'Content-Type':'application/x-www-form-urlencoded'},
+    body: "source=uploaded&filename=" + encodeURIComponent(filename)
+  }).then(r => r.json()).then(res => {
+    if (res.ok) {
+      img.src = "/video_feed?source=uploaded&filename=" + encodeURIComponent(filename);
+    } else {
+      alert("Could not start: " + (res.error || "unknown"));
+    }
+  });
+}
+
+function stopStream() {
+  fetch("/stop_stream", { method: "POST" }).then(r => r.json()).then(res => {
+    img.src = "";
+  });
+}
+
+startBtn.onclick = startStream;
+stopBtn.onclick = stopStream;
+</script>
+{% endblock %}

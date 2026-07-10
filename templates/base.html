@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>AI-Driven Real-Time Detection of Left-Behind Objects for Improved Public Security</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <style>
+    body { 
+      font-family: Inter, system-ui, Arial; 
+      background: url('{{ url_for("static", filename="home.gif") }}') no-repeat center center fixed; 
+      background-size: cover; 
+      color: #f3f4f6; 
+      margin: 0; 
+    }
+    header { 
+      padding: 20px; 
+      background: rgba(31, 41, 55, 0.85); 
+      color: #fef3c7; 
+      text-align: center; 
+      box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+    }
+    header h1 { 
+      font-size: 1.4rem; 
+      line-height: 1.3; 
+    }
+    .container { 
+      padding: 20px; 
+      max-width: 1000px; 
+      margin: 20px auto; 
+      background: rgba(0,0,0,0.5); 
+      border-radius: 12px; 
+      box-shadow: 0 4px 16px rgba(0,0,0,0.3);
+    }
+    .btn { 
+      display: inline-block; 
+      padding: 12px 18px; 
+      border-radius: 8px; 
+      background: #2563eb; 
+      color: #fff; 
+      text-decoration: none; 
+      margin: 6px; 
+      cursor: pointer; 
+      transition: background 0.3s;
+    }
+    .btn:hover { background: #1e40af; }
+    .btn.secondary { background: #6b7280; }
+    .big { font-size: 1.15rem; padding: 16px 20px; }
+    .card { 
+      background: rgba(255,255,255,0.1); 
+      padding: 16px; 
+      border-radius: 10px; 
+      box-shadow: 0 2px 8px rgba(20,20,20,0.3); 
+      margin-bottom: 12px; 
+      color: #f9fafb;
+    }
+    .row { display: flex; gap: 12px; flex-wrap: wrap; }
+    .center { text-align: center; }
+    video, img { max-width: 100%; border-radius: 8px; }
+    .controls { margin-top: 12px; }
+  </style>
+  {% block head %}{% endblock %}
+</head>
+<body>
+  <header>
+    <h1>AI-Driven Real-Time Detection of Left-Behind Objects for Improved Public Security</h1>
+  </header>
+  <div class="container">
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <div class="card">
+          {% for m in messages %}
+            <div>{{ m }}</div>
+          {% endfor %}
+        </div>
+      {% endif %}
+    {% endwith %}
+    {% block body %}{% endblock %}
+  </div>
+</body>
+</html>

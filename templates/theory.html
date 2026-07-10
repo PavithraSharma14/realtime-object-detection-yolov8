@@ -1,0 +1,106 @@
+{% extends "base.html" %}
+
+{% block body %}
+
+<div class="card theory-card">
+  <h2>🛡️ AI-Driven Real-Time Detection of Left-Behind Objects for Public Security</h2>
+
+  <p>
+    🚨 <strong>AI-driven left-behind object detection systems</strong> are intelligent surveillance
+    solutions designed to automatically identify unattended or abandoned objects in public spaces.
+    By leveraging computer vision and deep learning models such as YOLO, these systems continuously
+    analyze video streams from CCTV cameras to detect objects like bags, backpacks, suitcases, or
+    parcels that may pose a potential security threat.
+  </p>
+
+  <p>
+    🎥 The system operates by first detecting people and objects in each video frame using a
+    real-time object detection model. It then tracks these detections across consecutive frames.
+    When an object remains stationary for a certain period and its associated person moves away,
+    the system classifies it as a <strong>left-behind object</strong>. This automated approach
+    significantly reduces the need for manual monitoring and enables faster response to suspicious
+    situations.
+  </p>
+
+  <p>
+    🧠 Advanced AI logic is applied to distinguish normal behavior from suspicious activity.
+    The system avoids false alarms by analyzing object movement patterns, time duration,
+    and spatial relationships between people and objects. Only relevant objects such as bags
+    or luggage are prioritized, ensuring accurate and meaningful alerts in crowded environments.
+  </p>
+
+  <p>
+    🚔 These systems play a crucial role in <strong>public security and smart surveillance</strong>.
+    They are widely applicable in airports, railway stations, metro platforms, shopping malls,
+    stadiums, campuses, and other high-traffic public areas. Early detection of unattended objects
+    allows authorities to respond quickly, prevent potential threats, and ensure public safety.
+  </p>
+
+  <p>
+    ⚙️ Despite their effectiveness, challenges remain, including occlusion in crowded scenes,
+    varying lighting conditions, and real-time performance constraints. Ongoing research focuses
+    on improving object tracking accuracy, reducing false positives, enhancing scalability, and
+    integrating these systems with smart city infrastructure for proactive and intelligent
+    security management.
+  </p>
+
+  <div style="margin-top:20px;">
+    <a class="btn" href="{{ url_for('index') }}">🏠 Return to Home Page</a>
+  </div>
+</div>
+
+<style>
+  body {
+    background: url('{{ url_for("static", filename="about.gif") }}') no-repeat center center fixed;
+    background-size: cover;
+    font-family: Arial, sans-serif;
+    color: #fefae0;
+    padding: 40px;
+  }
+
+  .theory-card {
+    background: rgba(0,0,0,0.72);
+    padding: 28px;
+    border-radius: 16px;
+    max-width: 900px;
+    margin: auto;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(6px);
+  }
+
+  .theory-card h2 {
+    font-size: 1.85rem;
+    text-align: center;
+    color: #ffe8a3;
+    margin-bottom: 20px;
+    text-shadow: 0 0 12px #ffecb3;
+  }
+
+  .theory-card p {
+    line-height: 1.75;
+    font-size: 1.1rem;
+    margin-bottom: 16px;
+    color: #fdf6e4;
+    text-shadow: 0 0 8px rgba(255,255,255,0.2);
+  }
+
+  .btn {
+    background: linear-gradient(90deg, #1d4ed8, #1e40af);
+    color: white;
+    padding: 12px 22px;
+    border-radius: 10px;
+    font-size: 1rem;
+    text-decoration: none;
+    transition: .3s;
+    display: inline-block;
+    box-shadow: 0 0 12px rgba(0,0,0,0.4);
+  }
+
+  .btn:hover {
+    transform: scale(1.08);
+    background: linear-gradient(90deg, #1e40af, #1d4ed8);
+    box-shadow: 0 0 18px rgba(255,255,255,0.4);
+  }
+</style>
+
+{% endblock %}

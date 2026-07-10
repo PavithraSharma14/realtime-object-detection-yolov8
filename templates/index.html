@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block body %}
+<div class="card center" style="background: rgba(0,0,0,0.6); color: #fef3c7;">
+  <h2 style="font-size:1.3rem; margin-bottom:12px;">✨ Choose an Option ✨</h2>
+  <div class="row center" style="justify-content:center; margin-top:12px;">
+    <a class="btn big" href="{{ url_for('theory') }}">👓 AI-Driven Real-Time Detection of Left-Behind Objects for Improved Public Security</a>
+    <a class="btn big" href="{{ url_for('detection_menu') }}">🕵️‍♂️ AI-Driven Real-Time Detection of Left-Behind Objects for Improved Public Security (Detection)</a>
+  </div>
+</div>
+
+<style>
+  body {
+    background: url('{{ url_for("static", filename="inp3.jpg") }}') no-repeat center center fixed;
+    background-size: cover;
+    color: #f3f4f6;
+  }
+  .btn {
+    transition: all 0.3s;
+  }
+  .btn:hover {
+    background: #1e40af;
+    transform: scale(1.05);
+  }
+  .card h2 {
+    text-shadow: 0 0 8px #fef3c7;
+  }
+</style>
+{% endblock %}

@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+
+{% block body %}
+<div class="card" style="background: rgba(0,0,0,0.6); color:#fef3c7; padding:20px; border-radius:12px;">
+  
+  <h2 style="font-size:1.5rem; margin-bottom:16px;">📁 Upload a Video File</h2>
+
+  <form method="post" enctype="multipart/form-data">
+    <input type="file" name="video_file" accept="video/*" required 
+           style="padding:10px; border-radius:8px; border:none; width:100%; font-size:1rem;">
+
+    <div style="margin-top:15px;">
+      <button class="btn" type="submit">⬆️ Upload</button>
+      <a class="btn secondary" href="{{ url_for('detection_menu') }}">🔙 Back</a>
+    </div>
+  </form>
+
+  <p style="margin-top:12px; color:#e5e7eb;">📌 Allowed types: mp4, avi, mov, mkv</p>
+</div>
+
+<style>
+  body {
+    background: url('{{ url_for("static", filename="store.png") }}') no-repeat center center fixed;
+    background-size: cover;
+    color: #f3f4f6;
+  }
+
+  .card h2 {
+    text-shadow: 0 0 8px #fef3c7;
+  }
+
+  .btn {
+    background: #2563eb;
+    color: #fff;
+    padding: 12px 20px;
+    border-radius: 8px;
+    text-decoration: none;
+    margin-right: 8px;
+    display: inline-block;
+    transition: all 0.3s ease;
+  }
+
+  .btn:hover {
+    background: #1e40af;
+    transform: scale(1.05);
+  }
+
+  .btn.secondary {
+    background: #6b7280;
+  }
+
+  .btn.secondary:hover {
+    background: #4b5563;
+  }
+</style>
+
+{% endblock %}

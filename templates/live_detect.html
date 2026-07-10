@@ -1,0 +1,93 @@
+{% extends "base.html" %}
+
+{% block body %}
+<div class="card" style="background: rgba(0,0,0,0.6); color:#fef3c7; padding:22px; border-radius:14px;">
+
+  <h2 style="font-size:1.6rem; margin-bottom:18px; text-shadow:0 0 10px #fde68a;">
+    📡 Live Stream Detection (Webcam)
+  </h2>
+
+  <div class="row" style="justify-content:center;">
+    <div style="flex:1; text-align:center;">
+      <img id="stream" src="" alt="live detection stream" 
+           style="border-radius:10px; box-shadow:0 0 12px rgba(255,255,255,0.4);" />
+    </div>
+  </div>
+
+  <div class="controls" style="margin-top:22px; text-align:center;">
+    <button id="startBtn" class="btn">▶️ Start Stream</button>
+    <button id="stopBtn" class="btn secondary">⏹️ Stop Stream</button>
+
+    <a class="btn" href="{{ url_for('detection_menu') }}">🔙 Return Detection Menu</a>
+    <a class="btn secondary" href="{{ url_for('index') }}">🏠 Return Home</a>
+  </div>
+
+</div>
+
+<style>
+  body {
+    background: url('{{ url_for("static", filename="uploaded.jpg") }}') no-repeat center center fixed;
+    background-size: cover;
+    color: #f3f4f6;
+  }
+
+  .btn {
+    background: #2563eb;
+    color: #fff;
+    padding: 12px 22px;
+    border-radius: 8px;
+    font-size: 1rem;
+    text-decoration: none;
+    margin: 8px;
+    display: inline-block;
+    transition: all 0.3s ease;
+  }
+
+  .btn:hover {
+    background: #1e40af;
+    transform: scale(1.05);
+  }
+
+  .btn.secondary {
+    background: #6b7280;
+  }
+
+  .btn.secondary:hover {
+    background: #4b5563;
+  }
+
+  h2 {
+    text-align: center;
+  }
+</style>
+
+<script>
+const startBtn = document.getElementById('startBtn');
+const stopBtn = document.getElementById('stopBtn');
+const img = document.getElementById('stream');
+
+function startStream() {
+  fetch("/start_stream", {
+    method: "POST",
+    headers: {'Content-Type':'application/x-www-form-urlencoded'},
+    body: "source=live"
+  }).then(r => r.json()).then(res => {
+    if (res.ok) {
+      img.src = "/video_feed?source=live";
+    } else {
+      alert("❌ Could not start: " + (res.error || "unknown"));
+    }
+  });
+}
+
+function stopStream() {
+  fetch("/stop_stream", { method: "POST" }).then(r => r.json()).then(res => {
+    img.src = "";
+  });
+}
+
+startBtn.onclick = startStream;
+stopBtn.onclick = stopStream;
+</script>
+
+{% endblock %}
